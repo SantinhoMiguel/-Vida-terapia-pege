@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida Terapia</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #fffdf5;
+    color: #333;
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(90deg, #f9e79f, #f6d94f);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #444;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  p {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Ficha elegante em cards */
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .form-card {
+    flex: 1 1 45%;
+    background: #fffbe0;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+  button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    background: #f6d94f;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #eacb3d;
+  }
+
+  footer {
+    background: #f6d94f;
+    padding: 25px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  #topoBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #f6d94f;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+
+  /* Popup de confirmação */
+  #popup {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  #popup .popup-content {
+    background: #fffbe0;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+  #popup button {
+    width: auto;
+    margin-top: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .form-card {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>Vida Terapia</header>
+
+<section>
+<h2>Psicóloga Responsável</h2>
+<p><strong>Sebastiana Gomes Ferreira</strong><br>Psicóloga / Terapeuta responsável pela Vida Terapia</p>
+</section>
+
+<section>
+<h2>Ficha de Cadastro</h2>
+<form id="fichaForm">
+  <div class="form-container">
+    <div class="form-card">
+      <label>Data de Início:</label>
+      <input type="date" name="data_inicio" required>
+
+      <label>Nome:</label>
+      <input type="text" name="nome" required>
+
+      <label>Data de Nascimento:</label>
+      <input type="date" name="data_nascimento" required>
+
+      <label>Sexo:</label>
+      <select name="sexo" required>
+        <option value="">Selecione</option>
+        <option>Feminino</option>
+        <option>Masculino</option>
+        <option>Outro</option>
+      </select>
+
+      <label>Tipo Sanguíneo (opcional):</label>
+      <input type="text" name="tipo_sanguineo">
+
+      <label>Endereço:</label>
+      <input type="text" name="endereco" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Telefone:</label>
+      <input type="text" name="telefone" required>
+    </div>
+
+    <div class="form-card">
+      <label>Religião (opcional):</label>
+      <input type="text" name="religiao">
+
+      <label>Escolaridade:</label>
+      <input type="text" name="escolaridade" required>
+
+      <label>Profissão:</label>
+      <input type="text" name="profissao" required>
+
+      <label>Estado Civil:</label>
+      <input type="text" name="estado_civil" required>
+
+      <label>Telefone de um familiar ou amigo próximo:</label>
+      <input type="text" name="telefone_proximo" required>
+
+      <label>O que levou a fazer a terapia?</label>
+      <textarea name="motivo" required></textarea>
+
+      <label>Já fez terapia anteriormente? (citar abordagem e período)</label>
+      <textarea name="historico"></textarea>
+
+      <label>Qual a sua expectativa com a terapia?</label>
+      <textarea name="expectativa" required></textarea>
+
+      <button type="submit">Enviar Ficha</button>
+    </div>
+  </div>
+</form>
+</section>
+
+<div id="popup">
+  <div class="popup-content">
+    <h2>✅ Ficha enviada com sucesso!</h2>
+    <button onclick="document.getElementById('popup').style.display='none'">Fechar</button>
+  </div>
+</div>
+
+<footer>
+📍 Rua: Vitótria Régia, Nº 2241, Bairro Agreste, Laranjal do Jari - AP <br>
+📞 Contato: 96 99105-5854 | ✉️ elianaffsantos81@gmail.com
+</footer>
+
+<button id="topoBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆</button>
+
+<script>
+const form = document.getElementById('fichaForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const formData = new FormData(form);
+  fetch('enviar.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('popup').style.display = 'flex';
+    form.reset();
+  })
+  .catch(error => alert("Erro ao enviar ficha!"));
+});
+
+// Botão topo
+window.onscroll = function(){
+  let btn = document.getElementById("topoBtn");
+  if(window.scrollY > 200){ btn.style.display = "block"; }
+  else { btn.style.display = "none"; }
+};
+</script>
+
+</body>
+</html>
